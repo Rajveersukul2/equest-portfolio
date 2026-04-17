@@ -3,213 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EQUEST | MAX Fluency. SECURE THE BAG.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <title>EQUEST | Professional Communication & Soft Skills</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
       --primary: #00ffcc; 
-      --secondary: #6600ff; 
-      --bg: #030303;
-      --glass: rgba(255, 255, 255, 0.03);
+      --accent: #6600ff;
+      --bg-body: #080808;
+      --card-bg: #121212;
+      --glass: rgba(255, 255, 255, 0.05);
     }
 
     * {
       margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Space Grotesk', sans-serif;
-      cursor: crosshair;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    body { background: var(--bg); color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
-
-    /* Animated Cyber Gradient Background */
-    .bg-effect {
-      position: fixed; width: 800px; height: 800px;
-      background: radial-gradient(circle, var(--primary) 0%, var(--secondary) 100%);
-      filter: blur(150px); border-radius: 50%; z-index: -1; opacity: 0.12;
-      animation: moveEffect 20s infinite alternate linear;
+    body {
+      background-color: var(--bg-body);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    @keyframes moveEffect {
-      from { transform: translate(-20%, -20%); }
-      to { transform: translate(100%, 80%); }
+    /* Professional Background Gradient */
+    .mesh-gradient {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 255, 204, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(102, 0, 255, 0.05) 0%, transparent 50%);
+      z-index: -1;
     }
 
     header {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      width: 90%; background: rgba(8, 8, 8, 0.7); backdrop-filter: blur(20px);
-      border: 1px solid var(--glass); border-radius: 20px;
+      position: fixed; top: 0; width: 100%; padding: 20px 8%;
+      background: rgba(8, 8, 8, 0.8);
+      backdrop-filter: blur(15px);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 40px; z-index: 1000;
+      z-index: 2000; border-bottom: 1px solid var(--glass);
     }
 
-    /* Logo Styling with the updated link */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      transition: 0.3s;
+    .logo img {
+      height: 60px; width: auto; 
+      transition: transform 0.3s ease;
     }
 
-    .logo-container img {
-      height: 70px; /* Optimized height for header */
-      width: auto;
-      filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.6));
-      animation: logoFloat 3s ease-in-out infinite;
+    .logo img:hover { transform: scale(1.05); }
+
+    nav ul { display: flex; list-style: none; gap: 40px; }
+    nav a { 
+      text-decoration: none; color: #aaa; font-size: 0.9rem; font-weight: 500;
+      transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
+    }
+    nav a:hover { color: var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh; display: flex; flex-direction: column; 
+      justify-content: center; align-items: center; text-align: center;
+      background: radial-gradient(circle, rgba(0, 255, 204, 0.03) 0%, transparent 70%);
+      padding: 0 10%;
     }
 
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-5px) scale(1.02); }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.1;
+      margin-bottom: 25px; letter-spacing: -2px;
     }
 
-    nav ul { display: flex; gap: 30px; list-style: none; }
-    nav a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; transition: 0.3s; }
-    nav a:hover { color: var(--primary); text-shadow: 0 0 15px var(--primary); }
-
-    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-    .hero h1 { font-size: clamp(3.5rem, 12vw, 9rem); line-height: 0.8; margin-bottom: 25px; background: linear-gradient(to bottom, #fff, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
-
-    .btn {
-      display: inline-block; padding: 18px 45px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: #000; text-decoration: none; border-radius: 2px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 2px; transition: 0.4s;
-      box-shadow: 0 10px 40px rgba(0, 255, 204, 0.3);
+    .hero p {
+      max-width: 700px; font-size: 1.2rem; color: #888; margin-bottom: 40px;
     }
 
-    .btn:hover { transform: scale(1.05) rotate(-1deg); filter: brightness(1.2); }
+    .btn-primary {
+      padding: 18px 45px; background: var(--primary); color: #000;
+      text-decoration: none; font-weight: 700; border-radius: 8px;
+      transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
+    }
 
-    section { padding: 120px 10%; }
-    .section-title { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 50px; text-transform: uppercase; letter-spacing: -2px; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 255, 204, 0.4); }
 
-    /* --- REVIEWS HALL OF FAME --- */
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-    
+    /* Ad Showcase Section */
+    .ad-section {
+      padding: 100px 8%; background: #0c0c0c;
+    }
+
+    .section-header { margin-bottom: 60px; }
+    .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+    .section-header p { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+
+    .ad-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
+    }
+
+    .ad-card {
+      background: var(--card-bg); border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--glass); transition: 0.4s;
+    }
+
+    .ad-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+
+    .ad-card iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+    .ad-content { padding: 25px; }
+    .ad-content h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
+
+    /* Review Cards */
+    .review-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+      padding: 80px 8%;
+    }
+
     .review-card {
-      background: rgba(255,255,255,0.02);
+      background: var(--glass); padding: 40px; border-radius: 24px;
       border: 1px solid var(--glass);
-      padding: 40px;
-      border-radius: 40px;
-      transition: 0.5s;
-      position: relative;
-      overflow: hidden;
     }
 
-    .review-card::before {
-      content: '"'; position: absolute; top: -20px; right: 20px; 
-      font-size: 10rem; color: var(--primary); opacity: 0.05; font-family: serif;
+    .review-card p { font-style: italic; color: #ccc; margin-bottom: 20px; }
+    .reviewer { font-weight: 700; font-size: 0.9rem; color: var(--primary); }
+
+    footer {
+      padding: 60px 8%; border-top: 1px solid var(--glass);
+      display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 0.8rem;
     }
 
-    .review-card:hover {
-      background: rgba(102, 0, 255, 0.05);
-      border-color: var(--primary);
-      transform: translateY(-15px);
+    .wa-float {
+      position: fixed; bottom: 40px; right: 40px; background: #25d366;
+      width: 65px; height: 65px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 2rem; color: #fff;
+      z-index: 3000; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
     }
 
-    .stars { color: #00ffcc; margin-bottom: 20px; font-size: 0.8rem; }
-    .review-text { font-size: 1.1rem; line-height: 1.5; margin-bottom: 25px; opacity: 0.9; font-weight: 300; }
-    .reviewer-info { display: flex; align-items: center; gap: 15px; }
-    .reviewer-name { font-weight: 700; font-size: 0.9rem; color: var(--primary); text-transform: uppercase; }
-
-    /* --- CONTACT --- */
-    .dm-layout { display: flex; gap: 80px; align-items: center; }
-    .dm-form { flex: 1; background: var(--glass); padding: 50px; border-radius: 40px; border: 1px solid var(--glass); }
-    input, textarea { width: 100%; padding: 20px; margin-bottom: 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass); border-radius: 12px; color: #fff; font-size: 1rem; }
-    input:focus { border-color: var(--primary); outline: none; }
-
-    .wa-float { position: fixed; bottom: 40px; right: 40px; background: #25d366; color: #fff; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; z-index: 1001; box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4); transition: 0.3s; }
-    .wa-float:hover { transform: scale(1.1) rotate(15deg); }
-
-    @media (max-width: 900px) {
-      header { padding: 10px 20px; width: 95%; }
-      nav ul { gap: 15px; }
-      .nav-text { display: none; }
-      .dm-layout { flex-direction: column; }
+    @media (max-width: 768px) {
+      header { padding: 15px 5%; }
+      nav { display: none; }
+      .hero h1 { font-size: 3rem; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-effect"></div>
+  <div class="mesh-gradient"></div>
 
   <header>
+    <a href="#" class="logo">
+        <img src="https://i.ibb.co/hFqMQTJk/logo.png" alt="EQUEST Logo">
+    </a>
     <nav>
       <ul>
-        <li><a href="#main">Home</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-      </ul>
-    </nav>
-    
-    <div class="logo-container">
-        <a href="#main">
-          <img src="https://i.ibb.co/hFqMQTJk/logo.png" alt="EQUEST Logo">
-        </a>
-    </div>
-
-    <nav>
-      <ul>
+        <li><a href="#about">The Institute</a></li>
+        <li><a href="#ads">Showcase</a></li>
+        <li><a href="#reviews">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="https://maps.app.goo.gl/dnFDHQwVk61UNUNPA" target="_blank">Map</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero" id="main">
-    <div style="text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; color: var(--primary); margin-bottom: 10px;">Bolpur's #1 Spoken English Hub</div>
-    <h1>MAX <span style="color: var(--primary);">fluency.</span><br>SECURE THE BAG.</h1>
-    <p style="opacity: 0.5; margin-bottom: 30px; max-width: 600px;">Stop yapping, start communicating. We upgrade your soft skills to God-tier. No cap.</p>
-    <a href="https://maps.app.goo.gl/dnFDHQwVk61UNUNPA" class="btn" target="_blank">[ GET DIRECTIONS ]</a>
+  <section class="hero">
+    <h1>Elevate Your <span style="color: var(--primary);">Impact.</span></h1>
+    <p>Premium training in Spoken English and Corporate Soft Skills. We transform potential into professional excellence.</p>
+    <a href="https://maps.app.goo.gl/dnFDHQwVk61UNUNPA" target="_blank" class="btn-primary">LOCATE INSTITUTE</a>
+  </section>
+
+  <section class="ad-section" id="ads">
+    <div class="section-header">
+      <p>Media Showcase</p>
+      <h2>EQUEST in Motion</h2>
+    </div>
+
+    <div class="ad-grid">
+      <div class="ad-card">
+        <iframe src="https://www.youtube.com/embed/56tjFO9IP-A" allowfullscreen></iframe>
+        <div class="ad-content">
+          <h3>Institute Overview</h3>
+          <p>A look into our campus and the learning environment at Bolpur.</p>
+        </div>
+      </div>
+
+      <div class="ad-card">
+        <iframe src="https://www.youtube.com/embed/56tjFO9IP-A" allowfullscreen></iframe>
+        <div class="ad-content">
+          <h3>Why Soft Skills Matter</h3>
+          <p>Learn how communication can accelerate your career growth.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="reviews">
-    <h2 class="section-title">The <span style="color: var(--secondary);">Hall of Fame</span></h2>
-    <div class="reviews-grid">
+    <div class="section-header" style="text-align: center;">
+      <p>Success Stories</p>
+      <h2>What Our Students Say</h2>
+    </div>
+    <div class="review-grid">
       <div class="review-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"The Spoken English course here is actual brainrot-cure. I went from shy student to leading my college fest. Mr. Sukul is the G.O.A.T."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Rahul Sharma</div>
-        </div>
+        <p>"The curriculum is meticulously designed. My confidence in public speaking improved dramatically within just a month."</p>
+        <div class="reviewer">RAHUL SHARMA // CORPORATE LEAD</div>
       </div>
-
       <div class="review-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"Secured a high-paying MNC job thanks to the interview prep. They don't just teach English, they teach you how to dominate the room."</p>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Sneha Gupta</div>
-        </div>
+        <p>"Best decision for my career. The interview preparation was the key to landing my current position at a top MNC."</p>
+        <div class="reviewer">SNEHA GUPTA // SOFTWARE ENGINEER</div>
       </div>
-
       <div class="review-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"Vibes are 10/10. It's the only place in Bolpur where you actually learn soft skills that matter in 2026. SECURE THE BAG!"</p>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Arjun Das</div>
-        </div>
+        <p>"Professional, effective, and transformative. Mr. Sukul's personalized attention makes all the difference."</p>
+        <div class="reviewer">ARJUN DAS // GRADUATE</div>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="dm-layout">
-        <div style="flex: 1;">
-            <h2 class="section-title">THE DMs</h2>
-            <p style="font-size: 1.5rem; margin-bottom: 20px;">Ready for the upgrade?</p>
-            <p style="opacity: 0.6; margin-bottom: 10px;"><i class="fas fa-phone" style="color: var(--primary);"></i> +91 8927211995</p>
-            <p style="opacity: 0.6;"><i class="fab fa-youtube" style="color: var(--primary);"></i> @Actorium</p>
-        </div>
-        <div class="dm-form">
-            <input type="text" placeholder="YOUR NAME">
-            <input type="email" placeholder="YOUR EMAIL">
-            <textarea placeholder="WHAT'S THE MOVE?" rows="4"></textarea>
-            <button class="btn" style="width: 100%; border: none; cursor: pointer;">SEND IT</button>
-        </div>
+  <section id="contact" style="padding: 100px 8%; background: #050505;">
+    <div class="ad-grid" style="align-items: center;">
+      <div>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Ready to Begin?</h2>
+        <p style="color: #888; margin-bottom: 30px;">Visit us at Bolpur Santiniketan or reach out via our direct channels.</p>
+        <p><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Chitra Road, Opposite Bolpur Townclub</p>
+        <p><i class="fas fa-phone" style="color: var(--primary);"></i> +91 8927211995</p>
+      </div>
+      <div style="background: var(--card-bg); padding: 40px; border-radius: 20px;">
+        <form>
+          <input type="text" placeholder="Full Name" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px;">
+          <input type="email" placeholder="Email Address" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px;">
+          <textarea placeholder="Your Inquiry" rows="4" style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px;"></textarea>
+          <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">SEND INQUIRY</button>
+        </form>
+      </div>
     </div>
   </section>
 
-  <footer style="text-align: center; padding: 50px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px;">
-    EQUEST INSTITUTE // BOLPUR // EST. 2025 // CREATED BY MR. BISWAJIT SUKUL
+  <footer>
+    <p>© 2026 EQUEST INSTITUTE OF SPOKEN ENGLISH. All Rights Reserved.</p>
+    <div>
+      <a href="https://www.youtube.com/@Actorium" target="_blank" style="color: #666; margin-left: 20px;"><i class="fab fa-youtube"></i></a>
+      <a href="#" style="color: #666; margin-left: 20px;"><i class="fab fa-facebook"></i></a>
+    </div>
   </footer>
 
   <a href="https://wa.me/918927211995" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>

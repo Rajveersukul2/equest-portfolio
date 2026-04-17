@@ -28,6 +28,7 @@
       z-index: -1; pointer-events: none;
     }
 
+    /* --- Navigation --- */
     header {
       position: fixed; top: 0; width: 100%; padding: 15px 8%;
       background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(20px);
@@ -46,6 +47,7 @@
     nav a { text-decoration: none; color: #888; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
     nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
+    /* --- Hero Section --- */
     .hero {
       height: 100vh; display: flex; flex-direction: column; 
       justify-content: center; align-items: center; text-align: center;
@@ -81,6 +83,7 @@
     }
     .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 255, 204, 0.4); }
 
+    /* --- Stats Bar --- */
     .stats-bar {
       display: flex; justify-content: center; gap: 80px; padding: 60px;
       background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(10px);
@@ -91,6 +94,7 @@
     .stat-item h2 { color: var(--primary); font-size: 3rem; font-weight: 800; }
     .stat-item p { font-size: 0.75rem; text-transform: uppercase; color: #777; letter-spacing: 2px; }
 
+    /* --- Content Sections --- */
     .section-padding { padding: 140px 8%; }
     .section-title { font-size: 3.5rem; margin-bottom: 80px; text-align: center; font-weight: 800; letter-spacing: -2px; }
     .section-title span { color: var(--primary); }
@@ -99,26 +103,34 @@
       background: var(--card-bg); padding: 50px; border-radius: 40px;
       border: 1px solid var(--glass); transition: 0.4s ease;
       position: relative; height: 100%;
+      transform-style: preserve-3d;
     }
-    .review-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.02); }
+    .review-card:hover { 
+        border-color: var(--primary); 
+        background: rgba(255,255,255,0.02);
+        transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+    }
 
-    /* Ads Section Grid Styling */
+    /* --- Ads Styling --- */
     .ads-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      align-items: start;
     }
-    .ad-container {
-      background: var(--card-bg);
-      border-radius: 30px;
-      padding: 15px;
-      border: 1px solid var(--glass);
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      border-radius: 20px;
       overflow: hidden;
-      transition: 0.4s;
+      border: 1px solid var(--glass);
     }
-    .ad-container:hover { border-color: var(--primary); transform: translateY(-10px); }
+    .video-wrapper.square {
+      padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    }
 
+    /* --- Contact Form --- */
     .contact-form {
       background: var(--card-bg); padding: 60px; border-radius: 40px;
       border: 1px solid var(--glass); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -128,6 +140,7 @@
       border: 1px solid #222; border-radius: 15px; color: white; 
       font-size: 1rem; margin-bottom: 25px; transition: 0.3s;
     }
+    input:focus, textarea:focus { border-color: var(--primary); background: #080808; outline: none; }
 
     .wa-float {
       position: fixed; bottom: 40px; right: 40px; background: #25d366;
@@ -136,10 +149,11 @@
       color: #fff; z-index: 3000; box-shadow: 0 20px 40px rgba(37, 211, 102, 0.3);
       transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    .wa-float:hover { transform: scale(1.15) rotate(15deg); }
 
     @media (max-width: 900px) {
       .stats-bar { flex-direction: column; gap: 40px; width: 95%; text-align: center; margin-top: 0; }
-      header { padding: 10px 5%; }
+      .hero h1 { font-size: 3.5rem; }
       nav { display: none; }
       .dm-layout { grid-template-columns: 1fr !important; gap: 50px !important; }
     }
@@ -148,9 +162,7 @@
 <body>
 
   <header>
-    <a href="#" class="logo-container">
-        <img src="https://i.ibb.co/VpjhxDTL/IMG-20260312-WA0000.jpg" alt="EQUEST Logo">
-    </a>
+  <a href="#home"><img src="https://i.ibb.co/VpjhxDTL/IMG-20260312-WA0000.jpg" alt="EQUEST Logo" style="height: 65px; filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.4));"></a>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -181,21 +193,21 @@
   <section class="section-padding" id="ads">
     <h2 class="section-title">Official <span>Ads</span></h2>
     <div class="ads-grid">
-        <div class="ad-container reveal">
-            <div style="position:relative; width:100%; height:0px; padding-bottom:100%">
-                <iframe allow="fullscreen" allowfullscreen src="https://streamable.com/e/xhsidt?" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border-radius: 20px;"></iframe>
-            </div>
+      <div class="review-card reveal">
+        <div class="video-wrapper square">
+          <iframe src="https://streamable.com/o/xhsidt" frameborder="0" width="100%" height="100%" allowfullscreen style="position:absolute; top:0; left:0;"></iframe>
         </div>
-        <div class="ad-container reveal" style="transition-delay: 0.1s;">
-            <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%">
-                <iframe allow="fullscreen" allowfullscreen src="https://streamable.com/e/xd1tfu?" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border-radius: 20px;"></iframe>
-            </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay: 0.1s;">
+        <div class="video-wrapper">
+          <iframe src="https://streamable.com/o/ndr6pd" frameborder="0" width="100%" height="100%" allowfullscreen style="position:absolute; top:0; left:0;"></iframe>
         </div>
-        <div class="ad-container reveal" style="transition-delay: 0.2s;">
-            <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%">
-                <iframe allow="fullscreen" allowfullscreen src="https://streamable.com/e/ndr6pd?" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border-radius: 20px;"></iframe>
-            </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay: 0.2s;">
+        <div class="video-wrapper">
+          <iframe src="https://streamable.com/o/xd1tfu" frameborder="0" width="100%" height="100%" allowfullscreen style="position:absolute; top:0; left:0;"></iframe>
         </div>
+      </div>
     </div>
   </section>
 
@@ -204,7 +216,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px;">
       <div class="review-card reveal">
         <iframe width="100%" height="250" src="https://www.youtube.com/embed/56tjFO9IP-A" frameborder="0" style="border-radius: 20px;" allowfullscreen></iframe>
-        <h3 style="margin-top:20px; color: var(--primary);">The Institute Tour</h3>
+        <h3 style="margin-top:20px; color: var(--primary);">Institute Tour</h3>
         <p style="font-size: 0.9rem; color: #666;">Step into the environment where confidence is built.</p>
       </div>
       <div class="review-card reveal" style="transition-delay: 0.2s;">
@@ -216,7 +228,7 @@
   </section>
 
   <section class="section-padding" id="reviews" style="background: #080808;">
-    <h2 class="section-title">5-Star <span>Legacy</span></h2>
+    <h2 class="section-title">5-Star <span>Wall of Fame</span></h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       <div class="review-card reveal">
         <div style="color: #FFD700; margin-bottom: 20px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -240,7 +252,7 @@
     <div class="dm-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;">
         <div class="reveal">
             <h2 style="font-size: 4rem; margin-bottom: 30px;">Let's <span>Talk.</span></h2>
-            <p style="color: #888; font-size: 1.2rem; margin-bottom: 50px;">Direct inquiries go straight to our secure portal. Response time: < 24 hrs.</p>
+            <p style="color: #888; font-size: 1.2rem; margin-bottom: 50px;">Direct inquiries are routed through our secure portal to the founder's desk. Response time: &lt; 24 hrs.</p>
             <p><i class="fas fa-phone" style="color: var(--primary);"></i> +91 8927211995</p>
             <p><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-top: 20px;"></i> Bolpur Santiniketan, Chitra Road</p>
         </div>

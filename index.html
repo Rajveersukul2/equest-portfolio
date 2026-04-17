@@ -9,9 +9,9 @@
   
   <style>
     :root {
-      --primary: #00ffcc; /* Hyper Green */
-      --secondary: #6600ff; /* Millennial Purple */
-      --accent: #ff0055; /* Hypebeast Red */
+      --primary: #00ffcc; 
+      --secondary: #6600ff; 
+      --accent: #ff0055; 
       --bg: #030303;
       --glass: rgba(255, 255, 255, 0.03);
     }
@@ -31,7 +31,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Moving BG Effect */
     .bg-effect {
       position: fixed;
       width: 700px;
@@ -49,7 +48,6 @@
       to { transform: translate(110%, 110%); }
     }
 
-    /* Glass Header with centered Logo */
     header {
       position: fixed;
       top: 20px;
@@ -77,7 +75,7 @@
     }
 
     .logo img {
-      height: 100px; /* Increased size to match visual importance */
+      height: 100px;
       width: auto;
       filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.5));
       animation: logoPulse 4s infinite alternate;
@@ -94,7 +92,6 @@
       list-style: none;
     }
 
-    /* Offset menu for center logo */
     .nav-left { padding-right: 120px; }
     .nav-right { padding-left: 120px; }
 
@@ -113,7 +110,6 @@
       text-shadow: 0 0 10px var(--primary);
     }
 
-    /* --- Hero Section --- */
     .hero {
       height: 100vh;
       display: flex;
@@ -157,7 +153,7 @@
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: #000;
       text-decoration: none;
-      border-radius: 5px; /* Square vibe */
+      border-radius: 5px;
       font-weight: 700;
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -170,7 +166,6 @@
       box-shadow: 0 15px 50px rgba(0, 255, 204, 0.6);
     }
 
-    /* --- Sections --- */
     section { padding: 100px 8%; }
 
     .section-title {
@@ -183,7 +178,6 @@
       display: inline-block;
     }
 
-    /* --- The Vibe Grid (Courses) --- */
     .vibe-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -204,58 +198,15 @@
       position: relative;
     }
 
-    .vibe-card::after {
-      content: '';
-      position: absolute;
-      width: 100%; height: 100%;
-      top: 0; left: 0;
-      background: linear-gradient(180deg, transparent, rgba(102, 0, 255, 0.4));
-      opacity: 0;
-      transition: 0.6s;
-    }
-
     .vibe-card:hover {
       transform: translateY(-10px) scale(1.02) rotate(-1deg);
       border-color: var(--primary);
       box-shadow: 0 20px 60px rgba(102, 0, 255, 0.3);
     }
 
-    .vibe-card:hover::after { opacity: 1; }
-
-    .vibe-card h3 {
-      font-size: 1.8rem;
-      color: #fff;
-      z-index: 1;
-      position: relative;
-    }
-
-    .vibe-card p {
-      opacity: 0.6;
-      font-size: 0.9rem;
-      z-index: 1;
-      position: relative;
-    }
-
-    .icon-box {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: auto;
-      z-index: 1;
-      position: relative;
-    }
-
-    /* Bento Grid spans */
     .bento-1 { grid-column: span 2; grid-row: span 2; background: linear-gradient(45deg, #111, #222); }
     .bento-2 { grid-column: span 2; }
     
-    /* --- The POV (Video) --- */
-    .video-pov {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 100px 5%;
-    }
-
     iframe {
       width: 100%;
       max-width: 1000px;
@@ -266,7 +217,6 @@
       box-shadow: 0 0 80px rgba(0, 255, 204, 0.3);
     }
 
-    /* --- The DMs (Contact) --- */
     .dm-container {
       display: flex;
       gap: 60px;
@@ -274,14 +224,10 @@
       margin-top: 40px;
     }
 
-    .dm-info {
-      flex: 1;
-      font-size: 1.1rem;
-    }
-
     .dm-info h3 { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; }
     .dm-info p { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
-    .dm-info i { color: var(--secondary); font-size: 1.2rem; }
+    .dm-info a { color: #fff; text-decoration: none; transition: 0.3s; }
+    .dm-info a:hover { color: var(--primary); }
 
     .dm-form {
       flex: 1;
@@ -299,24 +245,8 @@
       border: 1px solid transparent;
       border-radius: 8px;
       color: #fff;
-      font-size: 0.9rem;
     }
 
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    /* --- Footer --- */
-    footer {
-      padding: 60px;
-      text-align: center;
-      font-size: 0.7rem;
-      opacity: 0.4;
-      border-top: 1px solid var(--glass);
-    }
-
-    /* Floating WhatsApp */
     .wa-float {
       position: fixed;
       bottom: 30px;
@@ -330,25 +260,14 @@
       align-items: center;
       justify-content: center;
       font-size: 2rem;
-      text-decoration: none;
       z-index: 1001;
       box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-      transition: 0.3s;
-    }
-
-    .wa-float:hover {
-      transform: scale(1.1) rotate(5deg);
     }
 
     @media (max-width: 900px) {
-      .vibe-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .bento-1, .bento-2 { grid-column: span 1; grid-row: span 1; }
+      .vibe-grid { grid-template-columns: 1fr; }
+      .bento-1, .bento-2 { grid-column: span 1; }
       .dm-container { flex-direction: column; }
-      header { padding: 10px 15px; }
-      .nav-left, .nav-right { padding: 0; }
-      nav ul { gap: 15px; }
-      nav a { font-size: 0.7rem; }
-      .logo img { height: 70px; }
     }
   </style>
 </head>
@@ -359,7 +278,7 @@
   <header>
     <nav class="nav-left">
       <ul>
-        <li><a href="#about">Main</a></li>
+        <li><a href="#main">Main</a></li>
         <li><a href="#courses">Vibes</a></li>
       </ul>
     </nav>
@@ -382,49 +301,32 @@
     <h1>MAX <span style="color: var(--primary);">fluency.</span><br>SECURE THE BAG.</h1>
     <p style="opacity: 0.6; max-width: 500px; margin-top: 20px;">
       The ultimate XP boost for your Spoken English and Soft Skills from Bolpur Santiniketan. 
-      This is the final boss fight against low confidence.
     </p>
-    <a href="#courses" class="btn" style="margin-top: 30px;">[ Let's Cook ]</a>
+    <a href="https://maps.app.goo.gl/ChIJcznPZbPc-TkRs3Uka98hZGM" class="btn" style="margin-top: 30px;" target="_blank">[ SECURE THE BAG ]</a>
   </section>
 
   <section id="courses">
     <h2 class="section-title">The Vibe Check (Programs)</h2>
     <div class="vibe-grid">
       <div class="vibe-card bento-1">
-        <div class="icon-box"><i class="fas fa-comments"></i></div>
+        <div class="icon-box"><i class="fas fa-comments" style="font-size: 3rem; color: var(--primary);"></i></div>
         <h3>Spoken English (Hard Fluent Mode)</h3>
-        <p>Hard-stuck in basic English? We will level up your XP and get you to Master tier fluency.</p>
+        <p>Hard-stuck in basic English? Level up your XP to Master tier fluency.</p>
       </div>
       <div class="vibe-card bento-2" style="background: var(--secondary);">
-        <div class="icon-box" style="color:#fff;"><i class="fas fa-user-tie"></i></div>
+        <div class="icon-box" style="color:#fff;"><i class="fas fa-user-tie" style="font-size: 3rem;"></i></div>
         <h3>Corporate Soft Skills</h3>
         <p>Real-world Leadership, Team Dynamics, and Ethics. Pure value.</p>
       </div>
       <div class="vibe-card">
-        <div class="icon-box"><i class="fas fa-handshake"></i></div>
-        <h3>Interview prep</h3>
+        <h3>Interview Prep</h3>
         <p>Unlock the secrets to crushing your interview. Period.</p>
       </div>
       <div class="vibe-card">
-        <div class="icon-box"><i class="fas fa-microphone-alt"></i></div>
-        <h3>Main Character Public Speaking</h3>
-        <p>Dominate the stage. Zero stage fright allowed.</p>
+        <h3>Public Speaking</h3>
+        <p>Main Character Energy only. Zero stage fright allowed.</p>
       </div>
     </div>
-  </section>
-
-  <section class="video-pov" id="video">
-    <h2 class="section-title">The POV (Classroom)</h2>
-    <iframe src="https://www.youtube.com/embed/56tjFO9IP-A" frameborder="0" allowfullscreen></iframe>
-  </section>
-
-  <section id="about" style="display: flex; align-items: center; gap: 50px; border-top: 1px solid var(--glass);">
-     <img src="https://via.placeholder.com/400" alt="Biswajit" style="border-radius: 30px; filter: grayscale(1) contrast(1.2);">
-     <div style="flex: 1;">
-        <h2 style="color: var(--primary);">The Founder: BISWAJIT SUKUL</h2>
-        <p style="font-size: 1.4rem; margin: 20px 0; line-height: 1.2;">The legend behind EQUEST. Your voice is your weapon. He shows you how to use it.</p>
-        <p style="opacity: 0.6;">Leading the linguistic revolution from Bolpur Santiniketan.</p>
-     </div>
   </section>
 
   <section id="contact">
@@ -432,7 +334,7 @@
     <div class="dm-container">
         <div class="dm-info">
             <h3>Contact info</h3>
-            <p><i class="fas fa-map-marker-alt"></i> Bolpur Santiniketan, Chitra Road, Opposite Bolpur Townclub</p>
+            <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/ChIJcznPZbPc-TkRs3Uka98hZGM" target="_blank">Bolpur Santiniketan, Chitra Road, Opposite Bolpur Townclub</a></p>
             <p><i class="fas fa-phone"></i> +91 8927211995 / 9475363257</p>
             <p><i class="fas fa-envelope"></i> biswajit.eq@gmail.com</p>
             <p><i class="fab fa-youtube"></i> YouTube // @Actorium</p>
@@ -441,21 +343,19 @@
             <input type="text" placeholder="Name">
             <input type="email" placeholder="Email">
             <textarea placeholder="Message" rows="4"></textarea>
-            <button class="btn" style="width: 100%;">SEND</button>
+            <button class="btn" style="width: 100%; border: none; cursor: pointer;">SEND</button>
         </div>
     </div>
   </section>
 
   <footer>
-    EQUEST INSTITUTE // BOLPUR // NO RIGHTS RESERVED... JK, ALL RIGHTS RESERVED 2026.
+    EQUEST INSTITUTE // BOLPUR // ALL RIGHTS RESERVED 2026.
     <br>Site created by the G.O.A.T. Mr. Biswajit Sukul
   </footer>
 
   <a href="https://wa.me/918927211995" class="wa-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2755776638172854" crossorigin="anonymous"></script>
 
 </body>
 </html>
